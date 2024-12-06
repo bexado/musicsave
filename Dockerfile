@@ -7,7 +7,7 @@ WORKDIR "/src/musicsave"
 RUN dotnet build "musicsave.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "musicsave.csproj" -c Release -o /app/publish
+RUN dotnet publish "musicsave.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM mcr.microsoft.com/dotnet/runtime:8.0 AS final
 WORKDIR /app
